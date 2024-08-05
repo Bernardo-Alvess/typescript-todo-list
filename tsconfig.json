@@ -2,17 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@repositories/*": ["./src/repositories/*"],
-      "@entities/*": ["./src/entities/*"]
+      "@entities/*": ["./src/entities/*"],
+      "@repositories/*": ["./src/repositories/*"]
     },
-    "target": "es2017",
+    "target": "ES6",
     "module": "commonjs",
-    "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "skipLibCheck": true
-  },
-  "include": [
-    "src/**/*.ts"
-  ]
+  }
 }
