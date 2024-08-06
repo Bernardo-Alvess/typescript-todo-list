@@ -24,4 +24,15 @@ export class SqlLiteTaskRepository implements ITasksRepository {
         return tasks
     }
 
+    async updateTask(task: IUpdateTaskDTO): Promise<void> {
+        await prisma.tasks.update({
+            data: {
+                title: task.title,
+                content: task.content,
+                checked: task.checked,
+            },
+            where: { id: task.id }
+        })
+    }
+
 }
