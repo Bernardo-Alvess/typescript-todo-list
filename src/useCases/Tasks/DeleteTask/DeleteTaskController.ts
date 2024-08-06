@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { DeleteTaskUseCase } from "./DeleteTaskUseCase";
+import { ZodError } from "zod";
 
 export class DeleteTaskController {
     constructor(private deleteTaskUseCase: DeleteTaskUseCase) { }
@@ -8,9 +9,11 @@ export class DeleteTaskController {
         try {
             const { id } = request.body
             await this.deleteTaskUseCase.execute(id)
-            response.status(200).send()
+            response.status(200).json({
+                message: 'Task deleted successfuly'
+            })
         } catch (err) {
-            if (err instanceof Error) {
+            if (err instanceof ZodError) {
                 response.status(404).send({
                     msg: err.message
                 })
