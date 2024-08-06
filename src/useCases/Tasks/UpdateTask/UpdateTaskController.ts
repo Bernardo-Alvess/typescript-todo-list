@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UpdateTaskUseCase } from "./UpdateTaskUseCase";
+import { ZodError } from "zod";
 
 export class UpdateTaskController {
     constructor(private updateTaskUseCase: UpdateTaskUseCase) { }
@@ -10,7 +11,7 @@ export class UpdateTaskController {
             const updatedTask = await this.updateTaskUseCase.execute({ id, title, content, checked })
             response.status(200).json({ ...updatedTask })
         } catch (err) {
-            if (err instanceof Error) {
+            if (err instanceof ZodError) {
                 response.status(400).json({
                     message: err.message || "Bad Request"
                 })
