@@ -1,12 +1,25 @@
 import { prisma } from "./prismaClient";
 import { Task } from "../../entities/TaskEntity";
 import { ITasksRepository } from "../ITasksRepository";
+import { ZodError } from "zod";
 
 
 export class SqlLiteTaskRepository implements ITasksRepository {
 
     async createTask(task: Task): Promise<void> {
         await prisma.tasks.create({ data: task })
+    }
+
+    async taskExists(id: string): Promise<boolean> {
+        const task = await prisma.tasks.findUnique({
+            where: { id: id }
+        })
+
+        if (!task) {
+            return false
+        }
+
+        return true
     }
 
     async deleteTask(id: string): Promise<void> {
