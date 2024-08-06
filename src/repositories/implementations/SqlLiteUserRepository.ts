@@ -1,4 +1,3 @@
-import { response } from "express";
 import { User } from "../../entities/UserEntity";
 import { IUserRepository } from "../IUserRepositry";
 import { prisma } from "./prismaClient";
@@ -18,6 +17,16 @@ export class SqlLiteUserRepository implements IUserRepository {
         }
 
         return user
+    }
+
+    async userAlreadyRegistered(email: string): Promise<boolean> {
+        const user = prisma.users.findUnique({
+            where: { email: email }
+        })
+
+        if (!user) return false
+
+        return true
     }
 
 }

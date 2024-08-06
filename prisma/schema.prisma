@@ -20,7 +20,7 @@ model Tasks {
 model Users {
   id       String  @id
   name     String
-  email    String
+  email    String  @unique
   password String
   tasks    Tasks[]
 }

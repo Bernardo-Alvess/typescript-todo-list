@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { CreateUserUseCase } from "./CreateUserUseCase";
+import { ZodError } from "zod";
 
 export class CreateUserController {
     constructor(private createUserUseCase: CreateUserUseCase) { }
@@ -10,7 +11,7 @@ export class CreateUserController {
             await this.createUserUseCase.execute({ name, email, password })
             return response.status(201).send()
         } catch (err) {
-            if (err instanceof Error) {
+            if (err instanceof ZodError) {
                 return response.status(400).json({
                     message: err.message || "Unexpected Error"
 

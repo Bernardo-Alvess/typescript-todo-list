@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { Request } from 'express'
 
-class DeleteTaskSchema {
+class TaskIdSchema {
     validateSchema = (request: Request) => {
         const schema = z.object({
             id: z.string().uuid({ message: "Invalid UUID format" }).min(1)
@@ -11,4 +11,4 @@ class DeleteTaskSchema {
     }
 }
 
-export { DeleteTaskSchema }
+export { TaskIdSchema }

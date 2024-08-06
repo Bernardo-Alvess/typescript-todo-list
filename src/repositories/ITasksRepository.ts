@@ -5,4 +5,5 @@ export interface ITasksRepository {
     deleteTask(id: string): Promise<void>
     getTasksForUser(userId: string): Promise<Task[]>
     updateTask(task: IUpdateTaskDTO): Promise<void>
+    taskExists(id: string): Promise<boolean>
 }

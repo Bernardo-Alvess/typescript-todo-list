@@ -1,8 +1,6 @@
 import { prisma } from "./prismaClient";
 import { Task } from "../../entities/TaskEntity";
 import { ITasksRepository } from "../ITasksRepository";
-import { ZodError } from "zod";
-
 
 export class SqlLiteTaskRepository implements ITasksRepository {
 

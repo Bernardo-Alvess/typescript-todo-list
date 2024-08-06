@@ -3,7 +3,7 @@ import { createTaskController } from "../../useCases/Tasks/CreateTask";
 import { getTasksController } from "src/useCases/Tasks/GetTasks";
 import { deleteTaskController } from "src/useCases/Tasks/DeleteTask";
 import { updateTaskController } from "src/useCases/Tasks/UpdateTask";
-import { DeleteTaskSchema } from "src/schemas/Tasks/delete.schema"
+import { TaskIdSchema } from "src/schemas/Tasks/id.schema"
 import { z } from "zod";
 import { CreateTaskSchema } from "src/schemas/Tasks/create.schema";
 import { UpdateTaskSchema } from "src/schemas/Tasks/update.schema";
@@ -17,12 +17,14 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
+    const taskIdSchema = new TaskIdSchema()
+    taskIdSchema.validateSchema(req)
     return getTasksController.handle(req, res)
 })
 
 router.delete('/', (req, res) => {
-    const deleteTaskSchema = new DeleteTaskSchema()
-    deleteTaskSchema.validateSchema(req)
+    const taskIdSchema = new TaskIdSchema()
+    taskIdSchema.validateSchema(req)
     return deleteTaskController.handle(req, res)
 })
 
