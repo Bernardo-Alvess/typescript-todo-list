@@ -7,7 +7,6 @@ interface ITaskProps {
 }
 
 export class Task {
-    static counter: number = 0
     public readonly id!: string;
     public title!: string;
     public content!: string;
@@ -18,7 +17,7 @@ export class Task {
     constructor(props: ITaskProps, id?: string) {
         Object.assign(this, props)
 
-        this.createdAt = new Date;
+        this.createdAt = new Date();
         this.checked = false
         if (!id) {
             this.id = uuid()
