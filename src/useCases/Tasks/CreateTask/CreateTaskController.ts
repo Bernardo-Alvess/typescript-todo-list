@@ -8,8 +8,10 @@ export class CreateTaskController {
         const { title, content, userId } = request.body
 
         try {
-            await this.createTaskUseCase.execute({ title, content, userId })
-            return response.status(201).send()
+            const task = await this.createTaskUseCase.execute({ title, content, userId })
+            return response.status(201).json({
+                task: task
+            })
 
         } catch (err) {
             if (err instanceof Error) {

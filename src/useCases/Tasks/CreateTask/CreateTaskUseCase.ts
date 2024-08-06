@@ -8,5 +8,6 @@ export class CreateTaskUseCase {
     async execute(data: ITaskDTO) {
         const task = new Task(data)
         await this.tasksRepository.createTask(task)
+        return task
     }
 }
