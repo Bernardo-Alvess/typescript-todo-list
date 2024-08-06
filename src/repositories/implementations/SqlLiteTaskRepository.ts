@@ -13,9 +13,7 @@ export class SqlLiteTaskRepository implements ITasksRepository {
             where: { id: id }
         })
 
-        if (!task) {
-            return false
-        }
+        if (!task) return false
 
         return true
     }

@@ -20,13 +20,13 @@ export class SqlLiteUserRepository implements IUserRepository {
     }
 
     async userAlreadyRegistered(email: string): Promise<boolean> {
-        const user = prisma.users.findUnique({
+        const user = await prisma.users.findUnique({
             where: { email: email }
         })
 
-        if (!user) return false
+        if (user) return true
 
-        return true
+        return false
     }
 
 }

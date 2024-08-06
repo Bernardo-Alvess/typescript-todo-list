@@ -13,13 +13,11 @@ export class CreateUserController {
         } catch (err) {
             if (err instanceof ZodError) {
                 return response.status(400).json({
-                    message: err.message || "Unexpected Error"
-
+                    message: err.message
                 })
             }
             return response.status(400).json({
-                message: "Unexpected error."
-
+                message: "User already registered"
             })
         }
     }
