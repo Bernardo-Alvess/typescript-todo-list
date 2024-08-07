@@ -3,7 +3,9 @@
     "baseUrl": ".",
     "paths": {
       "@entities/*": ["./src/entities/*"],
-      "@repositories/*": ["./src/repositories/*"]
+      "@repositories/*": ["./src/repositories/*"],
+      "@useCases/*": ["./src/useCases/*"],
+      "@schemas/*": ["./src/schemas/*"]
     },
     "target": "ES6",
     "module": "commonjs",

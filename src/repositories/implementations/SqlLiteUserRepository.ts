@@ -29,4 +29,17 @@ export class SqlLiteUserRepository implements IUserRepository {
         return false
     }
 
+    async getInfoForLogin(email: string): Promise<IUserLoginDTO> {
+        const user = await prisma.users.findUnique({
+            where: { email: email },
+            select: {
+                email: true,
+                password: true
+            }
+        })
+
+        if (!user) throw new Error("User not found")
+
+        return { ...user }
+    }
 }

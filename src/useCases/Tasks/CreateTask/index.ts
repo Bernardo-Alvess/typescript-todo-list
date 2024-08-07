@@ -1,4 +1,4 @@
-import { SqlLiteTaskRepository } from "../../../repositories/implementations/SqlLiteTaskRepository";
+import { SqlLiteTaskRepository } from "@repositories/implementations/SqlLiteTaskRepository";
 import { CreateTaskController } from "./CreateTaskController";
 import { CreateTaskUseCase } from "./CreateTaskUseCase";
 

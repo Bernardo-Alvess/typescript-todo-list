@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 import { ZodError } from "zod";
+import bcrypt from 'bcrypt'
 
 export class CreateUserController {
     constructor(private createUserUseCase: CreateUserUseCase) { }
@@ -15,7 +16,7 @@ export class CreateUserController {
                 return response.status(400).json({
                     message: err.message
                 })
-            }
+            } 
             return response.status(400).json({
                 message: "User already registered"
             })

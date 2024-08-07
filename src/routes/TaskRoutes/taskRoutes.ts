@@ -1,12 +1,11 @@
 import { Router } from "express";
-import { createTaskController } from "../../useCases/Tasks/CreateTask";
-import { getTasksController } from "src/useCases/Tasks/GetTasks";
-import { deleteTaskController } from "src/useCases/Tasks/DeleteTask";
-import { updateTaskController } from "src/useCases/Tasks/UpdateTask";
-import { TaskIdSchema } from "src/schemas/Tasks/id.schema"
-import { z } from "zod";
-import { CreateTaskSchema } from "src/schemas/Tasks/create.schema";
-import { UpdateTaskSchema } from "src/schemas/Tasks/update.schema";
+import { createTaskController } from "@useCases/Tasks/CreateTask";
+import { getTasksController } from "@useCases/Tasks/GetTasks";
+import { deleteTaskController } from "@useCases/Tasks/DeleteTask";
+import { updateTaskController } from "@useCases/Tasks/UpdateTask";
+import { TaskIdSchema } from "@schemas/Tasks/id.schema"
+import { CreateTaskSchema } from "@schemas/Tasks/create.schema";
+import { UpdateTaskSchema } from "@schemas/Tasks/update.schema";
 
 const router = Router()
 

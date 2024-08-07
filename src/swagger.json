@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3333/",
+            "url": "http://localhost:3333/api/",
             "description": "Servidor de desenvolvimento local"
         }
     ],
@@ -24,7 +24,9 @@
     "paths": {
         "/users": {
             "post": {
-                "tags": ["Users"],
+                "tags": [
+                    "Users"
+                ],
                 "summary": "Cadastro de usuário",
                 "description": "Essa rota irá cadastrar um novo usuário único no banco de dados",
                 "requestBody": {
@@ -44,7 +46,6 @@
                                 "schema": {
                                     "type": "object",
                                     "$ref": "#/components/schemas/CreateUser"
-                                    
                                 }
                             }
                         }
@@ -52,35 +53,54 @@
                 }
             },
             "get": {
-                "tags": ["Users"],
-                "summary": "Retorno de usuário",
-                "description": "Essa rota irá retornar um objeto com as informações do usuário com base no ID passado"
-            }
-        }
-    },
-    "components": {
-        "schemas": {
-            "CreateUser": {
-                "type": "object",
-                "required": [
-                    "name", "email", "password"
+                "tags": [
+                    "Users"
                 ],
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string",
-                        "format": "email"
-                    },
-                    "password": {
-                        "type": "string",
-                        "format": "password"
+                "summary": "Retorno de usuário",
+                "description": "Essa rota irá retornar um objeto com as informações do usuário com base no ID passado",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "uuid"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "components": {
+            "schemas": {
+                "CreateUser": {
+                    "type": "object",
+                    "required": [
+                        "name",
+                        "email",
+                        "password"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string",
+                            "format": "email"
+                        },
+                        "password": {
+                            "type": "string",
+                            "format": "password"
+                        }
                     }
                 }
             }
         }
     }
-
-    
 }

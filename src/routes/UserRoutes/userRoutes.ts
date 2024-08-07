@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { IdUserSchema } from 'src/schemas/Users/id.schema'
-import { CreateUserSchema } from 'src/schemas/Users/create.schema'
-import { createUserController } from 'src/useCases/Users/CreateUsers'
-import { getUserController } from 'src/useCases/Users/GetUsers'
+import { IdUserSchema } from '@schemas/Users/id.schema'
+import { CreateUserSchema } from '@schemas/Users/create.schema'
+import { createUserController } from '@useCases/Users/CreateUsers'
+import { getUserController } from '@useCases/Users/GetUsers'
 
 const router = Router()
 
