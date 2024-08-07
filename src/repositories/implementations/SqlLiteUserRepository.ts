@@ -33,6 +33,7 @@ export class SqlLiteUserRepository implements IUserRepository {
         const user = await prisma.users.findUnique({
             where: { email: email },
             select: {
+                id: true,
                 email: true,
                 password: true
             }

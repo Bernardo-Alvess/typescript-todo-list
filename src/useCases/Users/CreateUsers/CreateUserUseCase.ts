@@ -14,5 +14,7 @@ export class CreateUserUseCase {
 
         const user = new User(data)
         await this.sqlLiteUserRepository.saveUser(user)
+
+        return user
     }
 }
