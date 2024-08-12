@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@entities/*": ["./src/entities/*"],
+      "@repositories/*": ["./src/repositories/*"],
+      "@useCases/*": ["./src/useCases/*"],
+      "@schemas/*": ["./src/schemas/*"],
+      "@util/*": ["./src/util/*"]
+    },
+    "target": "ES6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
+}

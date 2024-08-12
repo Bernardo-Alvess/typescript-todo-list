@@ -1,0 +1,106 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "API de manipulação de usuário e tarefas para uma to-do list",
+        "description": "Essa API tem como objetivo criar, manipular e buscar usuários e tarefas em sua database, assim como realizar a autenticação de usuários",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333/api/",
+            "description": "Servidor de desenvolvimento local"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Users",
+            "description": "Operações sobre os usuários"
+        },
+        {
+            "name": "Tasks",
+            "description": "Operações sobre as tarefas"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Cadastro de usuário",
+                "description": "Essa rota irá cadastrar um novo usuário único no banco de dados",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/CreateUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Retorno de usuário",
+                "description": "Essa rota irá retornar um objeto com as informações do usuário com base no ID passado",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "uuid"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "components": {
+            "schemas": {
+                "CreateUser": {
+                    "type": "object",
+                    "required": [
+                        "name",
+                        "email",
+                        "password"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string",
+                            "format": "email"
+                        },
+                        "password": {
+                            "type": "string",
+                            "format": "password"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
