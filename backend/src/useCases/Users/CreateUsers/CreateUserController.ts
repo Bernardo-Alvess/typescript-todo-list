@@ -10,7 +10,6 @@ export class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { name, email } = request.body
         var { password } = request.body
-
         const salt = await bcrypt.genSalt();
         password = await bcrypt.hash(password, salt)
 
@@ -25,7 +24,7 @@ export class CreateUserController {
                 return response.status(400).json({
                     message: err.message
                 })
-            } 
+            }
             return response.status(400).json({
                 message: "User already registered"
             })

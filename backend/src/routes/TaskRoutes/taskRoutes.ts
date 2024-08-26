@@ -15,9 +15,7 @@ router.post('/', (req, res) => {
     return createTaskController.handle(req, res)
 })
 
-router.get('/', (req, res) => {
-    const taskIdSchema = new TaskIdSchema()
-    taskIdSchema.validateSchema(req)
+router.get('/:id', (req, res) => {
     return getTasksController.handle(req, res)
 })
 

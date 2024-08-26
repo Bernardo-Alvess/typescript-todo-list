@@ -5,7 +5,8 @@ export class GetTasksController {
     constructor(private getTasksUseCase: GetTasksUseCase) { }
 
     async handle(request: Request, response: Response) {
-        const { userId } = request.body
+        const userId = request.params.id
+
         try {
             const tasks = await this.getTasksUseCase.execute(userId)
             return response.status(200).json({ tasks })

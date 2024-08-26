@@ -5,12 +5,12 @@ export class CreateTaskController {
     constructor(private createTaskUseCase: CreateTaskUseCase) { }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { title, content, userId } = request.body
+        const { content, userId } = request.body
 
         try {
             const task = await this.createTaskUseCase.execute({ content, userId })
             return response.status(201).json({
-                task: task
+                task
             })
 
         } catch (err) {

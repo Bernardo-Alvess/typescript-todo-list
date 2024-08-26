@@ -12,4 +12,5 @@ router.use('/api/tasks', verifyToken, taskRoutes)
 router.use('/api/users', userRoutes)
 router.use('/api/auth', authRoutes)
 router.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+
 export { router }

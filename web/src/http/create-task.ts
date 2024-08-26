@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie'
+
 interface CreateTaskRequest {
     content: string,
     userId: string,
@@ -14,17 +16,22 @@ interface CreateTaskResponse {
 }
 
 export async function createTask({ content, userId }: CreateTaskRequest) {
+    const token = Cookies.get('jwt');
 
     const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/tasks`, {
         method: 'POST',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
-            content,
-            userId
-        })
-    })
+            content: content,
+            userId,
+        }),
+    });
 
-    const data: CreateTaskResponse = await response.json()
+    const newTask: CreateTaskResponse = await response.json()
 
-    return { task: data.task }
+    return newTask
 
 }
