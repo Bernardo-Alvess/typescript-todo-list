@@ -1,0 +1,16 @@
+{
+  "name": "typescript-todo-list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "tsnd --transpile-only --respawn --ignore-watch node_modules -r tsconfig-paths/register ./backend/src/server.ts",
+    "start": "cd backend && npm install && npm run dev:server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ts-node-dev": "^2.0.0"
+  }
+}
